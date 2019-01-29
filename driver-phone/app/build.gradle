@@ -1,0 +1,79 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "hu.bme.tmit.driverphone"
+        minSdkVersion 23
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+   // externalNativeBuild {
+    //    cmake {
+    //        path "CMakeLists.txt"
+    ////    }
+   // }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+    }
+    aaptOptions {
+        noCompress "tflite"
+        noCompress "lite"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+
+    implementation 'com.android.support:design:27.0.2'
+    implementation 'com.android.support:support-v13:27.0.2'
+    implementation 'com.android.support:appcompat-v7:27.0.2'
+
+    //Tensorflow
+    implementation 'org.tensorflow:tensorflow-android:+'
+
+    //Tensorflow Lite
+    implementation 'org.tensorflow:tensorflow-lite:+'
+
+    //Firebase
+    implementation 'com.google.firebase:firebase-core:11.8.0'
+    implementation 'com.firebaseui:firebase-ui-auth:3.2.2'
+
+    //Google Drive
+    implementation 'com.google.android.gms:play-services-drive:11.8.0'
+    implementation 'com.google.android.gms:play-services-auth:11.8.0'
+
+    //Apache file upload/download
+    implementation 'commons-net:commons-net:3.6'
+    implementation 'commons-io:commons-io:2.6'
+    implementation 'org.apache.httpcomponents:httpclient:4.5'
+
+    // Json konverzió
+    implementation 'com.google.code.gson:gson:2.8.2'
+
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
+
+//Firebase
+apply plugin: 'com.google.gms.google-services'

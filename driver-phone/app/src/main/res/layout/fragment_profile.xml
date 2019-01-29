@@ -1,0 +1,96 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="hu.bme.tmit.driverphone.fragments.ProfileFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/logo_w_h"
+                android:layout_height="@dimen/logo_w_h"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_person_pin_black_24dp" />
+
+            <TextView
+                android:id="@+id/fragment_profile_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Name"
+                android:textSize="@dimen/Large_text_size" />
+
+            <include layout="@layout/separator_line" />
+
+            <Button
+                android:id="@+id/fragment_profile_log_out"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/log_out"
+                android:textSize="@dimen/standard_text_size" />
+
+            <include layout="@layout/separator_line" />
+
+            <Button
+                android:id="@+id/fragment_profile_ftp_upload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/ftp_upload"
+                android:textSize="@dimen/standard_text_size" />
+
+            <include layout="@layout/separator_line" />
+
+            <LinearLayout
+                android:id="@+id/server_ip_address_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:padding="@dimen/standard_padding">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/standard_padding"
+                    android:text="@string/neural_network_path"
+                    android:textColor="@color/normal_text_color"
+                    android:textSize="@dimen/Large_text" />
+
+                <TextView
+                    android:id="@+id/neural_network_path_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/standard_padding"
+                    android:textColor="@color/normal_text_color"
+                    android:textSize="@dimen/Large_text" />
+
+            </LinearLayout>
+
+            <include layout="@layout/separator_line" />
+
+            <Button
+                android:id="@+id/fragment_profile_download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/download_new_model"
+                android:textSize="@dimen/standard_text_size" />
+
+            <include layout="@layout/separator_line" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>
