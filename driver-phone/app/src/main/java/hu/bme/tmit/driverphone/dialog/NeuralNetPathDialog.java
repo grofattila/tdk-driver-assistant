@@ -15,6 +15,9 @@ import android.widget.TextView;
 import hu.bme.tmit.driverphone.R;
 import hu.bme.tmit.driverphone.util.device.DevicePreferences;
 
+/**
+ * Neurális hálózat elérési cím beállítására szolgáló dialógus.
+ */
 public class NeuralNetPathDialog extends DialogFragment {
     private Button positive;
     private Button negativ;
@@ -69,8 +72,7 @@ public class NeuralNetPathDialog extends DialogFragment {
         super.onAttach(activity);
         try {
             this.positiveButtonHit = (OnCompleteListener)activity;
-        }
-        catch (final ClassCastException e) {
+        } catch (final ClassCastException e) {
             throw new ClassCastException(activity.toString() + " must implement OnCompleteListener");
         }
     }

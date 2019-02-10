@@ -12,23 +12,15 @@ import android.widget.Toast;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 
-import java.io.BufferedInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.Properties;
-
-import hu.bme.tmit.driverphone.activity.HomeActivity;
-import hu.bme.tmit.driverphone.util.camera.Color;
 
 /**
  * Background Async Task to download file
@@ -99,31 +91,7 @@ public class DownloadAsyncTask extends AsyncTask<Context, String, String> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //byte[] result = response.getEntity().getContent().
 
-/*
-        try {
-            URL url = new URL(urlString);
-            URLConnection connection = url.openConnection();
-            connection.setDoOutput(true);
-            connection.connect();
-            InputStream input = new BufferedInputStream(url.openStream(), 8192);
-            OutputStream output = new FileOutputStream(Environment.getExternalStorageDirectory().toString() + "/model.pb");
-            byte data[] = new byte[1024];
-            long total = 0;
-            while ((count = input.read(data)) != -1) {
-                total += count;
-                output.write(data, 0, count);
-            }
-            output.flush();
-            output.close();
-            input.close();
-            success = true;
-        } catch (Exception e) {
-            Log.e("Error: ", e.getMessage());
-
-        }
-*/
         return null;
     }
 

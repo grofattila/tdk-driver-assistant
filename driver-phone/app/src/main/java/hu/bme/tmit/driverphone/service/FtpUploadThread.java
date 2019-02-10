@@ -2,14 +2,8 @@ package hu.bme.tmit.driverphone.service;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.AsyncTask;
-import android.support.annotation.UiThread;
 import android.util.Log;
 import android.widget.Toast;
-
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.drive.DriveClient;
-import com.google.android.gms.drive.DriveResourceClient;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,6 +11,9 @@ import java.io.IOException;
 import hu.bme.tmit.driverphone.util.dataupload.UploadFTP;
 import hu.bme.tmit.driverphone.util.dataupload.WifiUtil;
 
+/**
+ * Videó és CSV FTP-re való feltöltéséért felelős szál.
+ */
 public class FtpUploadThread extends Thread {
 
 
@@ -57,11 +54,9 @@ public class FtpUploadThread extends Thread {
                                 Toast.makeText(((Activity) context), "Video uploaded and deleted locally: " + fileName, Toast.LENGTH_SHORT).show();
                             }
                         });
-                    }
-                    else
+                    } else
                         Log.d(TAG, f.getName() + " upload failed!");
-                }
-                else {
+                } else {
                     Log.d(TAG, "run: No wifi!!!");
                     ((Activity) context).runOnUiThread(new Runnable() {
                         @Override

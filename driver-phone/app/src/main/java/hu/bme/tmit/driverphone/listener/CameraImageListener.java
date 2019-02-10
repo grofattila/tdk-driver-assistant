@@ -14,19 +14,13 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 
-import org.apache.commons.io.output.FileWriterWithEncoding;
-import org.tensorflow.types.UInt8;
-
-import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import hu.bme.tmit.driverphone.neuralnet.NeuralNet;
 import hu.bme.tmit.driverphone.neuralnet.ssd.Detection;
@@ -37,9 +31,8 @@ import hu.bme.tmit.driverphone.util.camera.ImageProcessing;
 import hu.bme.tmit.driverphone.util.device.DevicePreferences;
 
 /**
- * Created by atig on 12/3/17.
+ * Kamera képének felvételekor futó Listener.
  */
-
 public class CameraImageListener implements ImageReader.OnImageAvailableListener {
 
     private static NeuralNet neuralNet;
@@ -62,7 +55,7 @@ public class CameraImageListener implements ImageReader.OnImageAvailableListener
     private HandlerThread detectionThread;
 
     private DevicePreferences devicePreferences;
-    private String neuralnetPath= null;
+    private String neuralnetPath = null;
 
 
     public CameraImageListener(Context context) {
@@ -91,7 +84,7 @@ public class CameraImageListener implements ImageReader.OnImageAvailableListener
     }
 
     public void loadNeuralNetwork() {
-        neuralNet = new SsdMobileNet(neuralnetPath,context.getApplicationContext());
+        neuralNet = new SsdMobileNet(neuralnetPath, context.getApplicationContext());
         isNeuralNetworkReady = true;
     }
 
@@ -114,6 +107,71 @@ public class CameraImageListener implements ImageReader.OnImageAvailableListener
         }
     }
 
+    private void runNeuralNet(Bitmap image) {
+        //saveBitampToFile(image);
+        Log.d(TAG, "bitmap:  " +
+                "\n byteCount: " + image.getByteCount() +
+                "\n getAllocationByteCount: " + image.getAllocationByteCount() +
+                "\n getRowBytes: " + image.getRowBytes() +
+                "\n, height: " + image.getHeight() +
+                "\n, width:  " + image.getWidth());
+
+        ByteBuffer byteBufferTmp = ByteBuffer.allocate(300 * 300 * 4);
+        image.copyPixelsToBuffer(byteBufferTmp);
+        byte[] byteArrayTmp = byteBufferTmp.array();
+        byte[] byteArray = new byte[300 * 300 * 3];
+
+        int k = 0;
+        for (int i = 0; i < 300; i++) {
+            for (int j = 0; j < 300; j++) {
+                int color = image.getPixel(i, j);
+                byteArray[k++] = (byte) Color.red(color);
+                byteArray[k++] = (byte) Color.green(color);
+                byteArray[k++] = (byte) Color.blue(color);
+            }
+        }
+
+        image.recycle();
+
+        Log.d(TAG, "run: --------------------->");
+
+        SsdResult res = (SsdResult) neuralNet.executeGraph(byteArray);
+
+        if (res != null) {
+            List<Detection> detectionList = res.getDetection().stream()
+                    .filter(det ->
+                            det.getClassName().equals("car") ||
+                                    det.getClassName().equals("bus") ||
+                                    det.getClassName().equals("traffic light"))
+                    .collect(Collectors.toList());
+            DetectionList detections = new DetectionList(detectionList);
+            Gson gson = new Gson();
+            String json = gson.toJson(detections);
+
+            Intent intent = new Intent();
+            intent.setAction("detection");
+            intent.putExtra("detectionListData", json);
+            context.sendBroadcast(intent);
+        }
+
+    }
+
+    private void saveToTxt(byte[] data) {
+        String filename = "test.txt";
+        File sd = Environment.getExternalStorageDirectory();
+        Log.d(TAG, "savetxt: " + sd.getAbsolutePath());
+        File dest = new File(sd, filename);
+
+        try {
+            FileWriter out = new FileWriter(dest);
+            out.write(Arrays.toString(data));
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     class InferenceThread implements Runnable {
 
         Image image;
@@ -123,10 +181,10 @@ public class CameraImageListener implements ImageReader.OnImageAvailableListener
         }
 
         public void run() {
-            try{
+            try {
                 Log.d(TAG, "image->  width: " + image.getWidth() +
                         ", height: " + image.getHeight());
-            }catch (Exception e) {
+            } catch (Exception e) {
 
             }
 
@@ -151,7 +209,7 @@ public class CameraImageListener implements ImageReader.OnImageAvailableListener
             Matrix matrix = new Matrix();
 
             matrix.postRotate(+180);
-            matrix.preScale(-1,1);
+            matrix.preScale(-1, 1);
             Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitMapImage, SsdMobileNet.INPUT_WIDTH, SsdMobileNet.INPUT_HEIGHT, true);
             Bitmap rotatedBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix, true);
 
@@ -165,67 +223,6 @@ public class CameraImageListener implements ImageReader.OnImageAvailableListener
 
             runNeuralNet(rotatedBitmap);
         }
-    }
-
-
-    private void runNeuralNet(Bitmap image) {
-        //saveBitampToFile(image);
-        Log.d(TAG, "bitmap:  " +
-                "\n byteCount: " + image.getByteCount() +
-                "\n getAllocationByteCount: " + image.getAllocationByteCount() +
-                "\n getRowBytes: " + image.getRowBytes() +
-                "\n, height: " + image.getHeight() +
-                "\n, width:  " + image.getWidth());
-
-        ByteBuffer byteBufferTmp = ByteBuffer.allocate(300 * 300 * 4);
-        image.copyPixelsToBuffer(byteBufferTmp);
-        byte[] byteArrayTmp = byteBufferTmp.array();
-        byte[] byteArray = new byte[300*300*3];
-
-        int k= 0;
-        for(int i = 0; i< 300; i++){
-            for(int j = 0; j< 300; j++){
-                int color = image.getPixel(i, j);
-                byteArray[k++] = (byte) Color.red(color);
-                byteArray[k++] = (byte) Color.green(color);
-                byteArray[k++] = (byte) Color.blue(color);
-            }
-        }
-
-        image.recycle();
-
-        Log.d(TAG, "run: --------------------->");
-
-        SsdResult res = (SsdResult) neuralNet.executeGraph(byteArray);
-
-        if(res != null){
-            List<Detection> detectionList = res.getDetection();
-            DetectionList detections = new DetectionList(detectionList);
-            Gson gson = new Gson();
-            String json = gson.toJson(detections);
-
-            Intent intent = new Intent();
-            intent.setAction("detection");
-            intent.putExtra("detectionListData", json);
-            context.sendBroadcast(intent);
-        }
-
-    }
-
-    private void saveToTxt(byte[] data){
-        String filename = "test.txt";
-        File sd = Environment.getExternalStorageDirectory();
-        Log.d(TAG, "savetxt: " + sd.getAbsolutePath());
-        File dest = new File(sd, filename);
-
-        try {
-            FileWriter out = new FileWriter(dest);
-            out.write(Arrays.toString(data));
-            out.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
     }
 
     private void saveBitampToFile(Bitmap bitmap) {

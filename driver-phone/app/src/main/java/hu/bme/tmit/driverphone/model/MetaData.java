@@ -2,6 +2,9 @@ package hu.bme.tmit.driverphone.model;
 
 import android.location.Location;
 
+/**
+ * Adatgyűjtéshez szükséges cimkék.
+ */
 public class MetaData {
 
     public static final String CSV_HEADER = "time;" +

@@ -3,7 +3,6 @@ package hu.bme.tmit.driverphone.fragments;
 import android.app.Fragment;
 import android.content.Context;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,20 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.support.v4.app.FragmentManager;
 
 import hu.bme.tmit.driverphone.R;
-import hu.bme.tmit.driverphone.dialog.NeuralNetPathDialog;
 import hu.bme.tmit.driverphone.util.datadownload.DownloadAsyncTask;
 import hu.bme.tmit.driverphone.util.device.DevicePreferences;
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ProfileFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ProfileFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Felhasználói beállításokért felelős Fragment.
  */
 public class ProfileFragment extends Fragment implements ProfileFragmentInterface {
 

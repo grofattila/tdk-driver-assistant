@@ -11,8 +11,6 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Surface;
-import android.view.WindowManager;
 
 import java.io.IOException;
 
@@ -22,6 +20,9 @@ import hu.bme.tmit.driverphone.util.datacollection.CSVWriter;
 import static android.content.Context.SENSOR_SERVICE;
 import static java.lang.Thread.sleep;
 
+/**
+ * Háttérben az adatgyűjtésért felelős szál.
+ */
 public class MetaCollectorThread implements Runnable, SensorEventListener {
 
     private final String TAG = this.getClass().toString();

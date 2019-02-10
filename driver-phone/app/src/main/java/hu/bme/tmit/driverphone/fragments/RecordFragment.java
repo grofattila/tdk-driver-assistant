@@ -55,7 +55,6 @@ import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -73,6 +72,9 @@ import hu.bme.tmit.driverphone.activity.HomeActivity;
 import hu.bme.tmit.driverphone.service.MetaCollectorThread;
 import hu.bme.tmit.driverphone.util.camera.AutoFitTextureView;
 
+/**
+ * Videó rögzítéséért felelős Fragment.
+ */
 public class RecordFragment extends Fragment
         implements View.OnClickListener, FragmentCompat.OnRequestPermissionsResultCallback{
 
@@ -781,6 +783,7 @@ public class RecordFragment extends Fragment
         }
 
     }
+
     /**
      *  Logs the device orientation. Results are not valid when the screen is facing the ground.
      *  (when the discriminant value is low (i.e. device almost horizontal) : no logs)

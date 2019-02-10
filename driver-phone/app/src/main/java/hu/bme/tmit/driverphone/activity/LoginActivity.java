@@ -22,6 +22,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import hu.bme.tmit.driverphone.R;
 
+/**
+ * Bejelentkezésért felelős Activity.
+ */
 public class LoginActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword;

@@ -16,6 +16,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import hu.bme.tmit.driverphone.R;
 
+/**
+ * Jelszó visszaállításáért felelős Activity.
+ */
 public class ResetPasswordActivity extends AppCompatActivity {
 
     private EditText inputEmail;

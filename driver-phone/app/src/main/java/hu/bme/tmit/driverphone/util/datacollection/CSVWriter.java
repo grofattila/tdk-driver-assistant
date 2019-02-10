@@ -12,6 +12,9 @@ import java.util.List;
 
 import hu.bme.tmit.driverphone.model.MetaData;
 
+/**
+ * CSV író.
+ */
 public class CSVWriter {
     private static final char DEFAULT_SEPARATOR = ';';
     private static String path;

@@ -18,6 +18,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import hu.bme.tmit.driverphone.R;
 
+/**
+ * Regisztrációért felelős Activity.
+ */
 public class SignUpActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword;

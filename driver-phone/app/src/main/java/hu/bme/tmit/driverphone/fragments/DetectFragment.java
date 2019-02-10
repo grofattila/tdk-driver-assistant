@@ -51,12 +51,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
 import hu.bme.tmit.driverphone.R;
-import hu.bme.tmit.driverphone.activity.HomeActivity;
 import hu.bme.tmit.driverphone.listener.CameraImageListener;
 import hu.bme.tmit.driverphone.neuralnet.ssd.Detection;
 import hu.bme.tmit.driverphone.neuralnet.ssd.DetectionList;
@@ -67,6 +65,9 @@ import static android.hardware.camera2.CameraCharacteristics.SCALER_STREAM_CONFI
 import static android.hardware.camera2.CameraMetadata.CONTROL_AF_STATE_ACTIVE_SCAN;
 import static android.hardware.camera2.CaptureRequest.CONTROL_AF_MODE;
 
+/**
+ * Detektálásért felelős Fragement.
+ */
 public class DetectFragment extends Fragment
         implements ActivityCompat.OnRequestPermissionsResultCallback {
 
