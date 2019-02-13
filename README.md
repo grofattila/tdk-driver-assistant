@@ -1,8 +1,9 @@
 # Vezetést segítő funkciók fejlesztése okostelefonra mély tanulás alapon
 
-## TDK dolgozat elérhetősége: [dolgozat](http://tdk.bme.hu/VIK/Neural/Vezetest-segito-funkciok-fejlesztese)
+## TDK dolgozat elérhetősége: [Dolgozat](http://tdk.bme.hu/VIK/Neural/Vezetest-segito-funkciok-fejlesztese)
+ Budapesti Műszaki és Gazdaságtudományi Egyetem Tudományos Diákköri Konferencián Neurális Hálózatok szekcióban II. helyezet.
 
-## Rövidebb összefoglaló Medium cikk elérhetősége: [cikk](http://tdk.bme.hu/VIK/Neural/Vezetest-segito-funkciok-fejlesztese)
+## Rövidebb összefoglaló Medium cikk elérhetősége: [Cikk](http://tdk.bme.hu/VIK/Neural/Vezetest-segito-funkciok-fejlesztese)
 
 ## Tartalom
 
