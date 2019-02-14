@@ -10,9 +10,9 @@
 - Általános leírás
 - Architektúra ábra
 - Modul leírások
-- Szoftverek, csomagok
+- Használt szoftverek, csomagok
 - Futtatás lokálisan 
-- Összefoglalás
+- Összefoglalás, eredmények
 
 ## Általános leírás
 A repository tartalmaz egy Android alkalmazást, amely autókat, buszok és jelző lámpákat detektál a kamera képén úgy, hogy a háttérben mély neurális hálózatok számításait a készülék processzorán futtatja. Az alkalmazás emellett képes videó rögzítésére, amelyet egy FTP tárhelyre fel tud tölteni. A szerver oldal a feltöltött videók feldolgozásával a mély neurális hálózat tovább tanítására képes, majd az „okosabb” hálózatot vissza tudja szinkronizálni az Androidos készülékre. A felhasználók számának növekedésével a begyűjtött tanító adat mennyisége is lineárisan nő, ezzel biztosítva a lehetőséget, hogy olyan adatokkal is tanítsunk, ami egyébként nem állna rendelkezésünkre. Az alkalmazás felhasználók kezelésre is képes, így a felhasználók hozzáférést az alkalmazás funkcióihoz távolról lehet korlátozni.
@@ -51,6 +51,25 @@ A modul alkalmas SSD MobileNet hálózat tanítására, mégpedig úgy, hogy a t
 #### Adatszinkronizációs modul 
 A Python képes fájlokat letölteni egy FTP tárhelyről és ezeket háttértárra elmenteni. Ezen kívül a szerver oldali alkalmazás egy webszervert biztosít, ahonnan az Android alkalmazás képes lesz majd letölteni a mély neurális hálózat újabb verzióját
 
-## Szoftverek, csomagok
+## Használt szoftverek, csomagok
+#### Android alkalmazás
+- Android Studio
+- Java
+- TendorFlow Android
+- TensorFlow Lite
+- Firebase Core
+- Firebase UI Auth
+- Apache Commons Net
+- Apache Commons IO
+- Http Client 
+- Goolge Gson
+
+#### Szerver oldal
+-
+
 ## Futtatás lokálisan 
-## Összefoglalás
+
+
+## Összefoglalás, eredmények
+
+
