@@ -72,4 +72,7 @@ A Python képes fájlokat letölteni egy FTP tárhelyről és ezeket háttértá
 
 ## Összefoglalás, eredmények
 
+Az Android alkalmazás képes TensorFlow és Keras-ban írt konvolúciós mély neurális hálózatot futtatni a készüléken lokálisan. A tovább tanított SSD MobilNet hálózat futtatásásra is képes. A Nokia 7 Plus készüléken egy predikció átlagos kiszámítási ideje ~470 ms 1000 futás alapján, míg az LG Nexus 5 esetében ez 3 másodperc fölött van.
 
+![alkalmazas_1](pics/alkalmazas_1.png)
+![alkalmazas_2](pics/alkalmazas_2.png)
