@@ -3,7 +3,7 @@
 ## TDK dolgozat elérhetősége: [Dolgozat](http://tdk.bme.hu/VIK/Neural/Vezetest-segito-funkciok-fejlesztese)
  Budapesti Műszaki és Gazdaságtudományi Egyetem Tudományos Diákköri Konferencián Neurális Hálózatok szekcióban II. helyezet.
 
-## Rövidebb összefoglaló Medium cikk elérhetősége: [Cikk](http://tdk.bme.hu/VIK/Neural/Vezetest-segito-funkciok-fejlesztese)
+## Rövidebb összefoglaló Medium cikk elérhetősége: [Cikk](https://medium.com/@SmartLabAI/vezet%C3%A9st-seg%C3%ADt%C5%91-funkci%C3%B3k-fejleszt%C3%A9se-okostelefonra-m%C3%A9ly-tanul%C3%A1s-alapon-c4f42f0423ca)
 
 ## Tartalom
 
