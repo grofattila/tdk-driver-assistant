@@ -65,10 +65,37 @@ A Python képes fájlokat letölteni egy FTP tárhelyről és ezeket háttértá
 - Goolge Gson
 
 #### Szerver oldal
--
+- Flask
+- numpy
+- os
+- six.moves.urllib
+- sys
+- tarfile
+- tensorflow
+- zipfile
+- collections
+- io
+- matplotlib
+- PIL
+- xml
+- cv2
+- PIL
+- timeit
+- pandas
+- vidstab
+- moviepy
 
 ## Futtatás lokálisan 
+Klónozás után az Android projektet az Android stúdióval kell megnyitni és minden konfiguráció nélkül sikeres build után telepíthető. 
 
+A szerver oldali alkalmazás feldolgozó script az alábbi paranccsal indítható:
+```
+python process_data.py -s /home/atig/test_input/ -d /home/atig/test_output -v 1
+```
+A szerver pedig az alábbi módon indítható:
+```
+python server.py
+```
 
 ## Összefoglalás, eredmények
 
