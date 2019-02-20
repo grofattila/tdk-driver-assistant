@@ -90,6 +90,8 @@ A repository tartalmaz néhány TensorFlow kódbázisból kiemelet részt is, en
 ## Futtatás lokálisan 
 Klónozás után az Android projektet az Android stúdióval kell megnyitni és minden konfiguráció nélkül sikeres build után telepíthető. 
 
+Az alkalamzás helyes működéséhez szükség van a Firebase azonosításhoz, hozzá kell adni egy sajátot "driver-phone/app/google-services.json" helyre.
+
 A szerver oldali alkalmazás feldolgozó script az alábbi paranccsal indítható:
 ```
 cd server/data_processor
