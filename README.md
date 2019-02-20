@@ -85,7 +85,7 @@ A Python képes fájlokat letölteni egy FTP tárhelyről és ezeket háttértá
 - vidstab
 - moviepy
 
-A repository tartalmaz néhány TensorFlow kódbázisból kiemelet részt is, ennek a szerzői joga mind a TensorFlow csapatát illeti, oka  futtatás egyszerűsítése volt.
+A repository tartalmaz néhány TensorFlow kódbázisból kiemelet részt is, ennek a szerzői joga mind a TensorFlow csapatát illeti, oka a futtatás egyszerűsítése volt.
 
 ## Futtatás lokálisan 
 Klónozás után az Android projektet az Android stúdióval kell megnyitni és minden konfiguráció nélkül sikeres build után telepíthető. 
