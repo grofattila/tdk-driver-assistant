@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<annotation>
+   <folder/>
+   <filename>image5.jpg</filename>
+   <path>./test_images/image5.jpg</path>
+   <size>
+      <width>640</width>
+      <height>480</height>
+   </size>
+   <object>
+      <name>car</name>
+      <bndbox>
+         <xmin>92</xmin>
+         <ymin>258</ymin>
+         <xmax>127</xmax>
+         <ymax>273</ymax>
+      </bndbox>
+   </object>
+   <object>
+      <name>car</name>
+      <bndbox>
+         <xmin>82</xmin>
+         <ymin>260</ymin>
+         <xmax>104</xmax>
+         <ymax>273</ymax>
+      </bndbox>
+   </object>
+</annotation>

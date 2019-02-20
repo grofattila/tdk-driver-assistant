@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config>
+	<picture_data>
+		<width>640</width>
+		<height>480</height>
+	</picture_data>	
+	<num_of_classes></num_of_classes>
+	<classes>
+		<class name="car">1</class>
+		<class name="bus">2</class>
+		<class name="traffic light">3</class>
+	</classes>
+	<train_folder></train_folder>
+	<test_folder></test_folder>
+</config>
