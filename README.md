@@ -92,10 +92,12 @@ Klónozás után az Android projektet az Android stúdióval kell megnyitni és 
 
 A szerver oldali alkalmazás feldolgozó script az alábbi paranccsal indítható:
 ```
-python process_data.py -s /home/atig/test_input/ -d /home/atig/test_output -v 1
+cd server/data_processor
+python process_data.py -s input_folder -d output_folder -v 1
 ```
 A szerver pedig az alábbi módon indítható:
 ```
+cd server/data_processor/server
 python server.py
 ```
 
